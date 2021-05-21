@@ -9,11 +9,12 @@ const randomIntegerFromInterval = (min, max) => {
         const canProcess = Math.random() > 0.3;
         
         setTimeout(() => {
-            if (canProcess) {
-                resolve(transaction.id, delay);
-            }             
-            reject(transaction.id);
-          }, delay);
+          if (canProcess) {
+            resolve([transaction.id, delay]); 
+          }  
+                       
+          reject(transaction.id);
+        }, delay);
     });
     // setTimeout(() => {
     //   const canProcess = Math.random() > 0.3;
@@ -26,11 +27,10 @@ const randomIntegerFromInterval = (min, max) => {
     // }, delay);
   };
   
-  const logSuccess = (id, time) => {
+  const logSuccess = ([id, time]) => {
     console.log(`Transaction ${id} processed in ${time}ms`);
-    console.log(id)
   };
-  
+
   const logError = id => {
     console.warn(`Error processing transaction ${id}. Please try again later.`);
   };
@@ -38,10 +38,10 @@ const randomIntegerFromInterval = (min, max) => {
   /*
    * Работает так
    */
-//   makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);
-//   makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);
-//   makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);
-//   makeTransaction({ id: 73, amount: 100 }, logSuccess, logError);
+  // makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);
+  // makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);
+  // makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);
+  // makeTransaction({ id: 73, amount: 100 }, logSuccess, logError);
 //   /*
 //    * Должно работать так
 //    */
